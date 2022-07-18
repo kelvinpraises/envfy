@@ -20,7 +20,7 @@ const SModal = styled.div`
   z-index: 2000;
 `;
 
-const SBacground = styled.div`
+const SBackground = styled.div`
   width: 100%;
   min-height: 9.6rem;
   background: #1a2138;
@@ -165,7 +165,7 @@ const Modal: React.FC<IModal> = ({ modal, setModal }) => {
   return (
     <SModal onClick={() => setModal(false)}>
       <SModalContent onClick={(e) => e.stopPropagation()}>
-        <SBacground />
+        <SBackground />
         <SPadding>
           <STitle>
             <SHeader type="h4">Profile</SHeader>
@@ -179,8 +179,8 @@ const Modal: React.FC<IModal> = ({ modal, setModal }) => {
           </SProfile>
           <SHeader1 type="h5">Teams</SHeader1>
           <STeams>
-            {teams?.map((team) => (
-              <STeam>
+            {teams?.map((team, i) => (
+              <STeam key={i}>
                 <SCircle></SCircle>
                 <SText>{team}</SText>
               </STeam>
@@ -188,8 +188,8 @@ const Modal: React.FC<IModal> = ({ modal, setModal }) => {
           </STeams>
           <SHeader1 type="h5">Post</SHeader1>
           <SPost>
-            {userPosts?.map((post) => (
-              <Post src={post}></Post>
+            {userPosts?.map((post, i) => (
+              <Post key={i} src={post}></Post>
             ))}
           </SPost>
         </SPadding>

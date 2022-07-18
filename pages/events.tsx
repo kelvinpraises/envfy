@@ -3,6 +3,7 @@ import Bound from "../components/Bound";
 import styled from "styled-components";
 import Text from "../components/Text";
 import Event from "../components/Event";
+import { NextPage } from "next";
 
 interface IEvent {
   eventImg: string;
@@ -58,15 +59,15 @@ const SBox1 = styled.div`
 const Sunderline = styled.div`
   width: 13.75rem;
   height: 0.7rem;
-  margin-top: .7rem;
+  margin-top: 0.7rem;
   background: #21273f;
 `;
 
 const SActive = styled.div`
   display: flex;
   flex-direction: column;
-align-items: start;
-`
+  align-items: start;
+`;
 
 const data = [
   {
@@ -95,7 +96,7 @@ const data = [
   },
 ];
 
-const events = () => {
+const Events: NextPage = () => {
   const [events, setEvents] = useState<IEvent[]>();
 
   useEffect(() => {
@@ -114,8 +115,8 @@ const events = () => {
           <SText type="h4">Completed (0)</SText>
         </SBox2>
         <SBox1>
-          {events?.map((event) => (
-            <SBound maxWidth="17rem">
+          {events?.map((event, i) => (
+            <SBound key={i} maxWidth="17rem">
               <Event
                 eventImg={event.eventImg}
                 eventTitle={event.eventTitle}
@@ -131,4 +132,4 @@ const events = () => {
   );
 };
 
-export default events;
+export default Events;

@@ -4,6 +4,7 @@ import Bound from "../../components/Bound";
 import Text from "../../components/Text";
 import Team from "../../components/Team";
 import Link from "next/link";
+import { NextPage } from "next/types";
 
 interface ITeams {
   teamId: string;
@@ -78,7 +79,7 @@ const data = [
   },
 ];
 
-const teams = () => {
+const Teams: NextPage = () => {
   const [teams, setTeams] = useState<ITeams[]>();
 
   useEffect(() => {
@@ -116,4 +117,4 @@ const teams = () => {
   );
 };
 
-export default teams;
+export default Teams;
