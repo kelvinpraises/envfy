@@ -6,7 +6,7 @@ This project is currently experimental which aims to check if envirionmental soc
 - Link to Envfy demo website: [Envfy Protocol](https://envfy.vercel.app/)
 - Please collaborate on the design: [Figma](https://www.figma.com/file/7dTc993dttfXaO58ulKou8/Envfy?node-id=18%3A371)
 
-This Project is for: [Create A Superfluid And AddressBook Ceramic Datamodel Integration](https://gitcoin.co/issue/28896) by [Ceramic](https://ceramic.network/) a decentralized protocol for building decentralized data streams and more.
+This project is for [SUSTAINABLE BLOCKCHAIN HACKATHON](https://gitcoin.co/issue/28896) it uses [IPFS](https:) an efficient decentralized protocol for storing and accessing data consistently and [Ceramic](https://ceramic.network/) a decentralized protocol for building decentralized data streams and more on IPFS.
 
 ## How to use
 
@@ -24,4 +24,3 @@ yarn run dev
 - Next.js
 - IPFS
 - Ceramic Network Dev Kit
-
