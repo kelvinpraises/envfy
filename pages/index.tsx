@@ -167,9 +167,23 @@ const data = [
 
 const Home: NextPage = () => {
   const [posts, setPosts] = useState<Ipost[]>();
+  const [funds, setFunds] = useState<string>()
+  const [event, setEvent] = useState<string>()
+  const [donation, setDonation] = useState<string>()
 
   useEffect(() => {
     setPosts(data);
+
+    const fund = {
+    funds: "0",
+    event: "0",
+    donation: "0"
+    }
+
+    setFunds(fund.funds)
+    setEvent(fund.event)
+    setDonation(fund.donation)
+
   }, []);
 
   return (
@@ -220,15 +234,15 @@ const Home: NextPage = () => {
           <SBound1 maxWidth="19rem" height="14rem">
             <SDonBox>
               <Simg1 src="/PooledFunds.svg" alt="" />
-              <Text>Pooled Funds: 0</Text>
+              <Text>Pooled Funds: {funds}</Text>
             </SDonBox>
             <SDonBox>
               <Simg1 src="/location.svg" alt="" />
-              <Text>Events Completed: 0</Text>
+              <Text>Events Completed: {event}</Text>
             </SDonBox>
             <SDonBox>
               <Simg1 src="/leaf.svg" alt="" />
-              <Text>Your Donation: 0</Text>
+              <Text>Your Donation: {donation}</Text>
             </SDonBox>
             <SButton  func={()=>{}}>Connect wallet</SButton>
           </SBound1>

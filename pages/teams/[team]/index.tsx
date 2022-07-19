@@ -1,11 +1,12 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Bound from "../../../components/Bound";
-import Team from "../../../components/Team";
+import TeamComp from "../../../components/Team";
 import Text from "../../../components/Text";
 import TextPost from "../../../components/TextPost";
 import LinkButton from "../../../components/LinkButton";
 import { useEffect, useState } from "react";
+import { NextPage } from "next";
 
 interface ITeamFeedData {
   posterDid: string;
@@ -45,11 +46,10 @@ const SBox = styled.div`
   display: flex;
 `;
 
-const STeam = styled(Team)`
+const STeam = styled(TeamComp)`
   /* height: ; */
   flex: 1;
 `;
-
 
 const teamData = [
   {
@@ -68,7 +68,7 @@ const teamData = [
   },
 ];
 
-const team = () => {
+const Team: NextPage = () => {
   const [teamFeed, setTeamFeed] = useState<ITeamFeedData[]>();
   const [teamImg, setTeamImg] = useState<string>();
   const [teamName, setTeamName] = useState<string>();
@@ -96,7 +96,7 @@ const team = () => {
     <SMain>
       <SBox>
         <Bound maxWidth="12rem" height="min-content">
-          <Team
+          <TeamComp
             teamName={teamName!}
             totalMembers={totalMembers!}
             teamUrl={teamUrl!}
@@ -117,7 +117,7 @@ const team = () => {
             >
               Exit&nbsp;Team
             </LinkButton>
-          </Team>
+          </TeamComp>
         </Bound>
 
         <SBox1>
@@ -146,4 +146,4 @@ const team = () => {
   );
 };
 
-export default team;
+export default Team;

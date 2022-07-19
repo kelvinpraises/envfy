@@ -5,6 +5,7 @@ import Text from "../../../components/Text";
 import LinkButton from "../../../components/LinkButton";
 import Team from "../../../components/Team";
 import TextPost from "../../../components/TextPost";
+import { NextPage } from "next";
 
 interface ICommentData {
   commentDid: string;
@@ -111,7 +112,7 @@ const userCommentData = [
   },
 ];
 
-const topic = () => {
+const Topic: NextPage = () => {
   const [commentData, setCommentData] = useState<ICommentData[]>();
 
   //data about the team
@@ -166,8 +167,7 @@ const topic = () => {
             totalMembers={totalMembers!}
             teamUrl={teamUrl!}
             teamImg={teamImg!}
-          >
-          </Team>
+          ></Team>
         </Bound>
 
         <SBox1>
@@ -211,4 +211,4 @@ const topic = () => {
   );
 };
 
-export default topic;
+export default Topic;
