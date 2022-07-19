@@ -5,6 +5,7 @@ import Text from "../../components/Text";
 import Team from "../../components/Team";
 import Link from "next/link";
 import { NextPage } from "next/types";
+import LinkButton from "../../components/LinkButton";
 
 interface ITeams {
   teamId: string;
@@ -25,7 +26,6 @@ const SBox = styled.div`
   margin: 0.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
-
 `;
 
 const SText = styled(Text)`
@@ -42,11 +42,16 @@ const SBox1 = styled.div`
 `;
 
 const SBound = styled(Bound)`
-    :hover {
+  :hover {
     border: ${({ theme }) => `2px solid ${theme.borderHover}`};
     transition: all 250ms;
   }
-`
+`;
+
+const SBox2 = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const data = [
   {
@@ -89,7 +94,10 @@ const Teams: NextPage = () => {
   return (
     <SMain>
       <SBox>
-        <SText type="h4">Teams</SText>
+        <SBox2>
+          <SText type="h4">Teams</SText>
+          <LinkButton href={""}>Create Team</LinkButton>
+        </SBox2>
         <SBox1>
           {teams?.map((team) => (
             <SBound key={team.teamId} maxWidth="12rem" height="16rem">
@@ -108,7 +116,9 @@ const Teams: NextPage = () => {
                 totalMembers={team.totalMembers}
                 teamUrl={team.teamUrl}
                 teamImg={team.teamImg}
-              />
+              >
+                <LinkButton href={team.teamUrl + "/join"}>Join</LinkButton>
+              </Team>
             </SBound>
           ))}
         </SBox1>

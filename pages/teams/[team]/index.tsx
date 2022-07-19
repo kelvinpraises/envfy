@@ -5,6 +5,15 @@ import Team from "../../../components/Team";
 import Text from "../../../components/Text";
 import TextPost from "../../../components/TextPost";
 import LinkButton from "../../../components/LinkButton";
+import { useEffect, useState } from "react";
+
+interface ITeamFeedData {
+  posterDid: string;
+  cardHeader: string;
+  posterImg: string;
+  time: string;
+  post: string;
+}
 
 const SMain = styled.main`
   display: flex;
@@ -12,7 +21,7 @@ const SMain = styled.main`
 `;
 
 const SText = styled(Text)`
-  font-weight: 900;
+  font-weight: 500;
   margin-bottom: 2rem;
 `;
 
@@ -39,75 +48,97 @@ const SBox = styled.div`
 const STeam = styled(Team)`
   /* height: ; */
   flex: 1;
-`
+`;
 
-const SLinkButton = styled(LinkButton)`
-padding: 1rem;
 
-  :hover{
-    border: 2px solid #8E5757;
-  }
-`
-
-const data = [
+const teamData = [
   {
-    teamId: "x3x4rf",
-    teamImg: "/20200713.jpg",
-    teamName: "Team NG",
-    totalMembers: "89",
-    teamUrl: "teams/hi",
+    posterDid: "0xc0ffee...d54979",
+    cardHeader: "Reeds town on slow uptake",
+    posterImg: "/20200716.jpg",
+    time: "1 hour ago",
+    post: "Well hope things get sorted real quick...",
+  },
+  {
+    posterDid: "0xc0ffee...d54979",
+    cardHeader: "Reeds town on slow uptake",
+    posterImg: "/20200716.jpg",
+    time: "1 hour ago",
+    post: "Well hope things get sorted real quick... yh i hope so too, and win",
   },
 ];
 
 const team = () => {
+  const [teamFeed, setTeamFeed] = useState<ITeamFeedData[]>();
+  const [teamImg, setTeamImg] = useState<string>();
+  const [teamName, setTeamName] = useState<string>();
+  const [totalMembers, setTotalMembers] = useState<string>();
+  const [teamUrl, setTeamUrl] = useState<string>();
+
+  useEffect(() => {
+    setTeamFeed(teamData);
+  }, []);
+
+  useEffect(() => {
+    const data = {
+      teamImg: "/20200713.jpg",
+      teamName: "Team NG",
+      totalMembers: "89",
+      teamUrl: "teams/hi",
+    };
+    setTeamImg(data.teamImg);
+    setTeamName(data.teamName);
+    setTotalMembers(data.totalMembers);
+    setTeamUrl(data.teamUrl);
+  }, []);
+
   return (
     <SMain>
       <SBox>
-        {data.map((e) => (
-          <Bound key={e.teamId} maxWidth="12rem">
-            <STeam
-              teamId={e.teamId}
-              teamName={e.teamName}
-              totalMembers={e.totalMembers}
-              teamUrl={e.teamUrl}
-              teamImg={e.teamImg}
+        <Bound maxWidth="12rem" height="min-content">
+          <Team
+            teamName={teamName!}
+            totalMembers={totalMembers!}
+            teamUrl={teamUrl!}
+            teamImg={teamImg}
+          >
+            <LinkButton href={"team/hi/about"} margin="1rem 0 0 0" width="100%">
+              New&nbsp;Post
+            </LinkButton>
+            <LinkButton href={"team/hi/about"} margin="1rem 0 0 0" width="100%">
+              About
+            </LinkButton>
+            <LinkButton
+              width="100%"
+              href={"team/hi/join"}
+              margin="1rem 0 0 0"
+              border="#8e5757"
+              borderHover="red"
             >
-              <LinkButton href={"team/hi/about"}>About</LinkButton>
-              <SLinkButton href={"team/hi/join"}>Exit Team</SLinkButton>
-            </STeam>
-          </Bound>
-        ))}
+              Exit&nbsp;Team
+            </LinkButton>
+          </Team>
+        </Bound>
+
         <SBox1>
           <SText type="h4">Feed</SText>
           <SBox2>
-            <Link href={"team/hi"}>
-              <a>
-                <Bound maxWidth={""} margin="0 0 2rem 0">
-                  <TextPost
-                    userId={"id"}
-                    Did={"0xc0ffee...d54979"}
-                    cardHeader={"Reeds town on slow uptake"}
-                    userImg="/20200716.jpg"
-                    time={"1 hour ago"}
-                    post={"Well hope things get sorted real quick..."}
-                  ></TextPost>
-                </Bound>
-              </a>
-            </Link>
-            <Link href={"team/hi"}>
-              <a>
-                <Bound maxWidth={""} margin="0 0 2rem 0">
-                  <TextPost
-                    userId={"id"}
-                    Did={"0xc0ffee...d54979"}
-                    cardHeader={"Reeds town on slow uptake"}
-                    userImg="/20200716.jpg"
-                    time={"1 hour ago"}
-                    post={"Well hope things get sorted real quick..."}
-                  ></TextPost>
-                </Bound>
-              </a>
-            </Link>
+            {teamFeed?.map((teamFeed, i) => (
+              <Link key={i} href={"team/hi"}>
+                <a>
+                  <Bound maxWidth={""} margin="0 0 2rem 0">
+                    <TextPost
+                      padding="1.5rem 2rem"
+                      Did={teamFeed.posterDid}
+                      cardHeader={teamFeed.cardHeader}
+                      userImg={teamFeed.posterImg}
+                      time={teamFeed.time}
+                      post={teamFeed.post}
+                    ></TextPost>
+                  </Bound>
+                </a>
+              </Link>
+            ))}
           </SBox2>
         </SBox1>
       </SBox>

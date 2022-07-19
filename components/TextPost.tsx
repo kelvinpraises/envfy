@@ -4,14 +4,15 @@ import Avatar from "./Avatar";
 import Text from "./Text";
 
 interface TextPost {
-  userId: string;
+  userId?: string;
   userImg?: string;
   cardHeader?: string;
   Did: string;
   time: string;
-  post: string;
+  post?: string;
   padding?: string;
   margin?: string;
+  children?: React.ReactNode;
 }
 
 interface ISTextPost {
@@ -19,33 +20,31 @@ interface ISTextPost {
   margin?: string;
 }
 
-
-
 const STextPost = styled.div<ISTextPost>`
   width: 100%;
   ${({ margin }) => {
     return [margin && `margin: ${margin}`];
   }};
-    ${({ padding }) => {
+  ${({ padding }) => {
     return [padding && `padding: ${padding}`];
   }};
 `;
 
 const SHeader = styled(Text)`
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.7rem;
 `;
 
 const SDid = styled(Text)`
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: -0.05em;
   margin-right: 1.2rem;
 `;
 
 const STime = styled(Text)`
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: #bcbcbc;
 `;
 
@@ -54,7 +53,7 @@ const SBox = styled.div`
 `;
 
 const SPost = styled(Text)`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 400;
 `;
 
@@ -67,12 +66,22 @@ const SBox1 = styled.div`
 `;
 
 const SBox2 = styled.div`
-    display: flex;
-    /* justify-content: space-between; */
-    margin-top: 1rem;
-`
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 1rem;
+`;
 
-const TextPost: React.FC<TextPost> = ({ userId, userImg, cardHeader, Did, time, post, padding, margin}) => {
+const TextPost: React.FC<TextPost> = ({
+  userId,
+  userImg,
+  cardHeader,
+  Did,
+  time,
+  post,
+  padding,
+  margin,
+  children,
+}) => {
   return (
     <STextPost padding={padding} margin={margin}>
       <SHeader>{cardHeader}</SHeader>
@@ -84,6 +93,7 @@ const TextPost: React.FC<TextPost> = ({ userId, userImg, cardHeader, Did, time, 
             <STime>{time}</STime>
           </SBox>
           <SPost>{post}</SPost>
+          {children}
         </SBox1>
       </SBox2>
     </STextPost>

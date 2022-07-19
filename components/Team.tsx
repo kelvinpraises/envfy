@@ -5,7 +5,7 @@ import LinkButton from "./LinkButton";
 import Text from "./Text";
 
 interface ITeam {
-  teamId: string;
+  teamId?: string;
   teamImg?: string;
   teamName: string;
   totalMembers: string;
@@ -55,7 +55,6 @@ const Team: React.FC<ITeam> = ({
         <SText1>{teamName}</SText1>
         <SText2>{totalMembers} members</SText2>
       </SBox>
-      <LinkButton href={teamUrl + "/join"}>Join</LinkButton>
       {children}
     </STeam>
   );

@@ -1,10 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Children, useEffect, useState } from "react";
+import { Children, MouseEvent, useEffect, useState } from "react";
 import styled from "styled-components";
 import Bound from "../components/Bound";
 import Text from "../components/Text";
 import Avatar from "../components/Avatar";
+import Button from "../components/Button";
 
 interface Ipost {
   avatar: string;
@@ -17,7 +18,11 @@ interface Ipost {
 
 const SBound1 = styled(Bound)`
   position: fixed;
-  right: 9.1rem;
+  right: 13.4rem;
+  padding: 0;
+  padding-top: 1.37rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const SText = styled(Text)`
@@ -136,6 +141,19 @@ const Simg = styled.img`
   margin-right: 0.25rem;
 `;
 
+const SDonBox = styled.div`
+display: flex;
+width: inherit;
+padding: .65rem 1.2rem;
+`
+
+const Simg1 = styled.img`
+padding-right: 0.75rem;
+`
+const SButton = styled(Button)`
+margin: 1.625rem 0 1rem 0;
+`
+
 const data = [
   {
     avatar: "/20200713.jpg",
@@ -200,7 +218,19 @@ const Home: NextPage = () => {
           </SBox1>
 
           <SBound1 maxWidth="19rem" height="14rem">
-            h
+            <SDonBox>
+              <Simg1 src="/PooledFunds.svg" alt="" />
+              <Text>Pooled Funds: 0</Text>
+            </SDonBox>
+            <SDonBox>
+              <Simg1 src="/location.svg" alt="" />
+              <Text>Events Completed: 0</Text>
+            </SDonBox>
+            <SDonBox>
+              <Simg1 src="/leaf.svg" alt="" />
+              <Text>Your Donation: 0</Text>
+            </SDonBox>
+            <SButton  func={()=>{}}>Connect wallet</SButton>
           </SBound1>
         </SBox>
       </SMain>

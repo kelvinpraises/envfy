@@ -27,13 +27,13 @@ const SText1 = styled(Text)`
 `;
 
 const SText2 = styled(Text)`
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   color: #008ded;
   font-weight: medium; ;
 `;
 
 const SText3 = styled(Text)`
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   line-height: 170%;
   font-weight: 200;
 `;

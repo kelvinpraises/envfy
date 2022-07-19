@@ -8,6 +8,7 @@ interface ILinkButtonProps {
   href: string;
   border?: string;
   borderHover?: string;
+  width?: string;
   margin?: string;
 }
 
@@ -49,12 +50,13 @@ const LinkButton: React.FC<ILinkButtonProps> = ({
   href,
   border,
   margin,
-  borderHover
+  borderHover,
+  width,
 }) => {
   return (
     <Link passHref={true} href={href}>
-      <a>
-        <SLinkButton border={border} margin={margin} borderHover = {borderHover}>
+      <a style={{ width: width && width }}>
+        <SLinkButton border={border} margin={margin} borderHover={borderHover}>
           <Text type="h6">{children}</Text>
         </SLinkButton>
       </a>

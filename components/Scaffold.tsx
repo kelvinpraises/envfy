@@ -3,6 +3,7 @@ import Header from "./Header";
 import NavBar from "./NavBar";
 import styled from "styled-components";
 import Modal from "./Modal";
+import PostForm from "./PostForm";
 
 interface IScaffoldProp {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ const Scaffold: React.FC<IScaffoldProp> = ({ children }) => {
         <Header />
         {children}
         <Modal modal={modal} setModal={setModal} />
+        {/* <PostForm /> */}
       </SContainer>
     </SScaffold>
   );
