@@ -2,6 +2,7 @@
 
 This project is currently experimental which aims to check if envirionmental social good can be funded through crowd participation and carried out by willing teams around the world. This uses IPFS and Ceramic Models for data storage.
 
+- Link to video demo: [Loom](https://www.loom.com/share/d79633973fd6461689004619d9056bc8)
 - Link to Envfy server: [GitHub](https://github.com/kelvinpraises/envfy-server)
 - Link to Envfy demo website: [Envfy Protocol](https://envfy.vercel.app/)
 - Please collaborate on the design: [Figma](https://www.figma.com/file/7dTc993dttfXaO58ulKou8/Envfy?node-id=18%3A371)
