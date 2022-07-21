@@ -6,6 +6,7 @@ import Team from "../../components/Team";
 import Link from "next/link";
 import { NextPage } from "next/types";
 import LinkButton from "../../components/LinkButton";
+import axios from "axios";
 
 interface ITeams {
   teamId: string;
@@ -86,6 +87,8 @@ const data = [
 
 const Teams: NextPage = () => {
   const [teams, setTeams] = useState<ITeams[]>();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
 
   useEffect(() => {
     setTeams(data);
@@ -126,5 +129,3 @@ const Teams: NextPage = () => {
     </SMain>
   );
 };
-
-export default Teams;
