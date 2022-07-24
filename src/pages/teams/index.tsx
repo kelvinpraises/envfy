@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import Bound from "../../components/Bound";
-import Text from "../../components/Text";
-import Team from "../../components/Team";
 import Link from "next/link";
 import { NextPage } from "next/types";
+import { useEffect, useState } from "react";
+import styled from "styled-components";
+import Bound from "../../components/Bound";
 import LinkButton from "../../components/LinkButton";
-import axios from "axios";
+import Team from "../../components/Team";
+import Text from "../../components/Text";
 
 interface ITeams {
   teamId: string;
@@ -92,6 +91,8 @@ const Teams: NextPage = () => {
 
   useEffect(() => {
     setTeams(data);
+
+    
   }, []);
 
   return (
